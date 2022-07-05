@@ -2,49 +2,41 @@ const express = require('express');
 const app = express();
 var admin = require("firebase-admin");
 
-var serviceAccount = require("./testfcm-7cee9-firebase-adminsdk-bplyk-a2ac18c3a9.json");
+var serviceAccount = require("./sonia-8cf1d-firebase-adminsdk-bkilg-8090d672c1.json");
 
-// admin.initializeApp(serviceAccount)
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
+
 const registrationToken = [
-  "duxgPwEmTZatqLMlNZZtPC:APA91bFDwaVuSJgUvr6Tlzp_Gszfe714N2Z0PjzdLQYuojDjmpqBy2Xt0I9gswpz6H6kaoLqRl6XRQ6Sja6NoiTI4a562GXYSTMCSnhYrAPBgjN6Bw5WlDUrNGBd6EvCNgytVoO8U1an",
-  "f55vG32hR7W_L_2sFFt2rb:APA91bER8MmMEXLDzOiDRYAex1qCQ19mxnloQoh6qXgBYp1dyN3cVNW3boJ2dCGqmQwcZQqT67TCc8da2_9lMdBXoQaOdpzCguruE3NgZd72GEiwzIgxsvDkyDmDv3O1HzD-7xN6ixdq"
+  "cGOR8G4LQfKBgh6dBvHLuI:APA91bE26hGPk6JF0FIm9bt8l6z_El7LlT0dqKE2ZJGY6c9vokNmSlrxyx_40-cXZTy3LK-Gi-78BRib62nt6Vl-tllxzMWJWEivvpD6XPTDCeI5L5o7IiPbFJPCO-M1pO2OnhdaRbfc",
+  "dkKYkBbBYkQzj1pn_y2dEt:APA91bEROpeS65cuXTjq8-jIZWD1vzJ2hMpdcls8BaFojBltuvSaHaBzN654gJWEopA7Y_vyXskQ05UzJ2EVAPkx0IHT2erxg9108xm6Q1_N1f9kOq1Jzay6kPKnLWDkTRiqBLkfFj6q"
 ]
 
+
+// admin.messaging().send(a)
 admin.messaging().sendToDevice(registrationToken, {
   notification: {
-    badge: "99",
-    title: "Hello World",
-    body: "This is a notification that will be displayed on your device"
-    
+    "title": "dwdw",
+    "body": "test qililik",
+    "image": "https://images.hothardware.com/contentimages/article/3184/content/small_Sony-Xperia-5-iii-07.jpg"
+  },
+  "data": {
+    "ownerName": 'data.name || ""',
+    "phone": 'data.phone || ""',
+    "userImg": 'https://backend-sonia.uz/logo/logo.png',
+    "subServiceImg": 'https://backend-sonia.uz/logo/logo.png',
+    "buildingName": 'data.clinic_name || ""',
+    "locationAddress": "data.location_address",
+    "meetingDay": "moment(data.created_at)",
+    "meetingTime": "data.meeting_time",
+    "title": "client",
+    "accepted": "true",
+    "name": "name",
+    "logo": "https://backend-sonia.uz/logo/logo.png"
   }
 })
-
-
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyBcGWcPJUqCUwC7fg3c4PcxBzxUjKYxY0s",
-  authDomain: "testfcm-7cee9.firebaseapp.com",
-  projectId: "testfcm-7cee9",
-  storageBucket: "testfcm-7cee9.appspot.com",
-  messagingSenderId: "5011012163",
-  appId: "1:5011012163:web:47ef17413e5df46bd272f6",
-  measurementId: "G-1YZZ8Z405W"
-};
-
-// Initialize Firebase
-// const app1 = admin.initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app1);
 
 app.listen(3000, () => console.log(3000))
